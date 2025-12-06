@@ -16,5 +16,17 @@ test.describe("Inventory Test", () => {
 
     });
 
+    test("Sort the products by the title or price", async ({ page }) => {
+        const login = new LoginPage(page);
+        const inventory = new ProductsPage(page);
+        
+        await login.goto();
+        await login.login(users.validUser.username, users.validUser.password);
+        await inventory.assertOnProductsPage();
+        
+
+    });
+
+
 
 });

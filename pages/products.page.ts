@@ -15,18 +15,22 @@ export class ProductsPage extends BasePage {
   }
 
   async checkProductList(products: Record<string, Product>) {
-  for (const product of Object.values(products)) {
+    for (const product of Object.values(products)) {
 
-    const container = this.page.locator('.inventory_item').filter({
-      has: this.page.locator('.inventory_item_name', { hasText: product.title })
-    });
+      const container = this.page.locator('.inventory_item').filter({
+        has: this.page.locator('.inventory_item_name', { hasText: product.title })
+      });
 
-    await expect(
-      container.locator('.inventory_item_price')
-    ).toHaveText(product.price);
+      await expect(
+        container.locator('.inventory_item_price')
+      ).toHaveText(product.price);
+    }
   }
-}
 
+  async checkProductsOrder(products: Record<string, Product>, option: string, order: string) {
+    const productsTitleInPage = this.page.locator('.inventory_item_name').allTextContents();
+    const productsPriceInPage = this.page.locator('.inventory_item_price').allTextContents();
+  }
 
   async addToCart(productName: string) {
     await this.page.locator(`text=${productName}`).click();
