@@ -23,19 +23,18 @@ test.describe("Inventory Test", () => {
         await login.goto();
         await login.login(users.validUser.username, users.validUser.password);
         await inventory.assertOnProductsPage();
+
+        await inventory.sortProductsList("az")
         await inventory.checkProductsOrder("az");
-        await inventory.sortProductsList('za')
+
+        await inventory.sortProductsList("za")
         await inventory.checkProductsOrder("za");
 
-        await inventory.sortProductsList('lohi')
+        await inventory.sortProductsList("lohi")
         await inventory.checkProductsOrder("lohi");
 
-        await inventory.sortProductsList('hilo')
+        await inventory.sortProductsList("hilo")
         await inventory.checkProductsOrder("hilo");
-
-
-
-
     });
 
 
