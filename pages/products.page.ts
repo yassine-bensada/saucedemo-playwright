@@ -30,23 +30,22 @@ export class ProductsPage extends BasePage {
   async checkProductsOrder(order: "az" | "za" | "hilo" | "lohi") {
     switch (order) {
       case "az":
-        this.checkFirstProduct('name', 'Sauce Labs Backpack')
+        await this.checkFirstProduct('name', 'Sauce Labs Backpack')
         break;
       case "za":
-        this.checkFirstProduct('name', 'Test.allTheThings() T-Shirt (Red)')
+        await this.checkFirstProduct('name', 'Test.allTheThings() T-Shirt (Red)')
         break;
       case "hilo":
-        this.checkFirstProduct('price', '$49.99')
+        await this.checkFirstProduct('price', '$49.99')
         break;
       case "lohi":
-        this.checkFirstProduct('price', '$7.99')
+        await this.checkFirstProduct('price', '$7.99')
         break;
     };
   }
 
   async sortProductsList(order: string){
     await this.page.selectOption('[data-test="product-sort-container"]', order)
-
   }
 
   async addToCart(productName: string) {
@@ -58,9 +57,9 @@ export class ProductsPage extends BasePage {
     await this.page.click('.shopping_cart_link');
   }
 
-  checkFirstProduct(key: string, value: string) {
-    this.page.locator('.inventory_item').nth(1).filter({
-      has: this.page.locator(`.inventory_item_${key}`, { hasText: value }).nth(1)
-    });
+  async checkFirstProduct(key: string, value: string) {
+    await expect(
+    this.page.locator('.inventory_item').first().locator(`.inventory_item_${key}`)
+  ).toHaveText(value);
   }
 }
