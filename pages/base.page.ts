@@ -10,4 +10,8 @@ export class BasePage {
   async wait(seconds: number) {
     await this.page.waitForTimeout(seconds * 1000);
   }
+
+  async click(selector: string){
+    await this.page.click(selector);
+  }
 }

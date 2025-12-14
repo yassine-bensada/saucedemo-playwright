@@ -1,12 +1,7 @@
 import { BasePage } from './base.page';
 import { expect } from '@playwright/test';
+import { Product } from "../types/product.type";
 
-type Product = {
-  id: string,
-  title: string,
-  price: string,
-  image: string
-}
 
 export class ProductsPage extends BasePage {
 
