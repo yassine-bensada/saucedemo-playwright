@@ -1,0 +1,16 @@
+{
+  "products": {
+    "product-1": {
+      "id": "sauce-labs-backpack",
+      "title": "Sauce Labs Backpack",
+      "price": "$29.99",
+      "image": "img/sauce-labs-backpack.jpg"
+    },
+    "product-4": {
+      "id": "sauce-labs-fleece-jacket",
+      "title": "Sauce Labs Fleece Jacket",
+      "price": "$49.99",
+      "image": "img/sauce-labs-fleece-jacket.jpg"
+    }
+  }
+}
