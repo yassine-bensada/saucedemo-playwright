@@ -6,7 +6,7 @@ import users from '../data/users.json'
 import products from '../data/cart-products.json';
 
 
-test.describe("Cart flow tests",  () => {
+test.describe("Cart flow tests", () => {
     test("Add and removes products", async ({ page }) => {
         const login = new LoginPage(page);
         const inventory = new ProductsPage(page);
@@ -20,6 +20,10 @@ test.describe("Cart flow tests",  () => {
         await inventory.click('[data-test="shopping-cart-link"]');
         await cart.assertOnCartPage();
         await cart.checkCartList(products.products)
+        await cart.click('[data-test="continue-shopping"]')
+        await inventory.assertOnProductsPage();
+        await inventory.click('[data-test="remove-sauce-labs-backpack"]');
+        await inventory.click('[data-test="remove-sauce-labs-fleece-jacket"]');
 
 
     })
